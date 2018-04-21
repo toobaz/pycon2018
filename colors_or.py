@@ -1,4 +1,7 @@
 def colors_or(left, right):
+    left = list(left)
+    right = list(right)
+    
     N = len(left)
 
     todo = [True] * N
