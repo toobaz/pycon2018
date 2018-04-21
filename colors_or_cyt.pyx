@@ -1,12 +1,17 @@
+from cpython cimport array
+
 def update_connected(items, connected, int N):
     cols = {items[idx] for idx in connected}
     connected = {i for i in range(N) if items[i] in cols}
     return connected
     
 
-def colors_or(left, right):
-    left = list(left)
-    right = list(right)
+def colors_or(l_left, l_right):
+    
+    cdef int[:] left = array.array('i', l_left)
+    cdef int[:] right = array.array('i', l_right)
+    
+    cdef int N
     
     N = len(left)
 
