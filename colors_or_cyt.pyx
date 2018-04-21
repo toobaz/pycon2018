@@ -1,3 +1,9 @@
+def update_connected(items, connected, int N):
+    cols = {items[idx] for idx in connected}
+    connected = {i for i in range(N) if items[i] in cols}
+    return connected
+    
+
 def colors_or(left, right):
     left = list(left)
     right = list(right)
@@ -14,16 +20,14 @@ def colors_or(left, right):
         prev_size = 1
         
         for it in range(N):
-            r_cols = {right[idx] for idx in connected}
-            connected = {i for i in range(N) if right[i] in r_cols}
-            
-            l_cols = {left[idx] for idx in connected}
-            connected = {i for i in range(N) if left[i] in l_cols}
-            
+            connected = update_connected(right, connected,
+                                         N)
+            connected = update_connected(left, connected,
+                                         N)            
             size = len(connected)
             if size == prev_size:
-                l_col = l_cols.pop()
-                r_col = r_cols.pop()
+                l_col = left[idx]
+                r_col = right[idx]
                 for i in connected:
                     left[i] = l_col
                     right[i] = r_col
@@ -31,4 +35,4 @@ def colors_or(left, right):
                 break
             prev_size = size
     return left
-    
+
