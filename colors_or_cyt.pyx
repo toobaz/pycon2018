@@ -1,7 +1,10 @@
 from cpython cimport array
 
-def update_connected(items, connected, int N):
-    cols = {items[idx] for idx in connected}
+def update_connected(int[:] items, connected, int N):
+    cdef int idx
+    cols = set()
+    for idx in connected:
+        cols.add(items[idx])
     connected = {i for i in range(N) if items[i] in cols}
     return connected
     
