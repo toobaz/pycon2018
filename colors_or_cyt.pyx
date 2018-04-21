@@ -13,7 +13,7 @@ cpdef ndarray[int64_t] update_connected(ndarray[int64_t] items, connected,
         cols[items[idx]] = 1
     connected = {i for i in range(N) if cols[items[i]]}
     a_connected = np.array(list(connected), dtype='int')
-    return connected
+    return a_connected
     
 
 cpdef _colors_or(ndarray[int64_t] left,
