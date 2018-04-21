@@ -19,9 +19,9 @@ cpdef ndarray[int64_t] update_connected(ndarray[int64_t] items, connected,
 cpdef _colors_or(ndarray[int64_t] left,
                 ndarray[int64_t] right):
     
-    cdef int[:] cols = array.array('i', right)
-    
-    cdef int N
+    cdef:
+        int[:] cols = array.array('i', right)
+        int N
     
     N = len(left)
 
