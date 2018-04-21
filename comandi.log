@@ -1,0 +1,11 @@
+# Per generare il file c:
+cython colors_or_cyt.pyx
+
+# Per generare il file di annotazioni (colors_or_cyt.html):
+cython -a colors_or_cyt.pyx
+
+
+
+# Per compilare il modulo:
+cython setup.py build_ext --inplace
+
